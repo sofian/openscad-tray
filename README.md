@@ -91,7 +91,7 @@ tray([100, 60, 30], n_columns=3, n_rows=2, columns=[0.25, 0.75], rows=[false, [1
 ```
 ![tray_advanced_example1](https://user-images.githubusercontent.com/791244/151715600-0b6faa30-b02a-4b38-a1db-0b92f049dc8b.png)
 
-### Subdivisions with different numbers of rows per column, specific distribution of rows and columns
+### Subdivisions with different numbers of rows per column (specific distribution)
 
 Tray with unequal number of rows per column: first column has 4 rows, second column has 2 rows and final column as 3 rows. First and last columns are at 25% of width from each side. Rows in first and last column are equally distributed but the first two rows of middle column each occupyp 25% of column length.
 ```openscad
