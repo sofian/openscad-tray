@@ -36,3 +36,71 @@ Arguments:
 * **dividers_bottom_bevel_radius** Radius of bottom bevel of subdivisions for curved trays (default: same as ```bottom_bevel_radius```)
 * **dividers_top_bevel_radius** Radius of top/sides bevel of subdivisions for curved trays (default: same as ```top_bevel_radius).
 * **rows_first*** Allows to draw the tray priorizing the rows instead of columns. If ```true```, arguments for rows and columns are inverted (default: ```false```).
+
+
+# Examples
+
+## Basic usage
+
+### Simple tray
+
+Simple tray with curved inside (default):
+
+```openscad
+tray([100, 60, 30]);
+```
+![tray_example_basic](https://user-images.githubusercontent.com/791244/151715318-17cfad2f-fbd2-43f9-9e35-d561f216f50a.png)
+
+### Equal subdividers
+
+Tray with equal subdividers (3 columns, 2 rows):
+```openscad
+tray([100, 60, 30], n_columns=3, n_rows=2);
+```
+![tray_example_subdividers_equal](https://user-images.githubusercontent.com/791244/151715323-8862e26d-2bf8-4224-a2ee-1f0582489519.png)
+
+### Unequal column subdividers
+
+Tray with unequal subdividers (3 columns, 2 rows). First and last columns are at 25% of width from each side.
+```openscad
+tray([100, 60, 30], n_columns=3, n_rows=2, columns=[0.25, 0.75]);
+```
+![tray_example_subdividers_unequal](https://user-images.githubusercontent.com/791244/151715333-58a6b24d-582c-48ac-9bda-a060da336190.png)
+
+### Unequal number of rows per column, equally distributed 
+
+Tray with unequal number of rows per column, equally distributed: first column has 4 rows, second column has 2 rows and final column as 3 rows.
+```openscad
+tray([100, 60, 30], n_columns=3, n_rows=[4,2,3]);
+```
+![tray_example_subdividers_unequal_n_rows](https://user-images.githubusercontent.com/791244/151715427-ec4976b6-a0dc-4d7f-ad88-d4f3d9f0723e.png)
+
+Same but with unequal number of *columns per row*, equally distributed.
+```openscad
+tray([100, 60, 30], n_rows=3, n_columns=[4,2,3], rows_first=true);
+```
+![tray_example_subdividers_unequal_n_columns](https://user-images.githubusercontent.com/791244/151715872-2ad8439a-8d7c-4465-9b81-0d60bcc71f7b.png)
+
+## Advanced usage
+
+### Unequal subdividers for both rows and columns
+
+Traw with unequal subdividers (3 columns, 2 rows). First and last columns are at 25% of width from each side. Rows in first and last column are equally distributed but first row of middle column occupies only one third of length.
+```openscad
+tray([100, 60, 30], n_columns=3, n_rows=2, columns=[0.25, 0.75], rows=[false, [1/3], false]);
+```
+![tray_advanced_example1](https://user-images.githubusercontent.com/791244/151715600-0b6faa30-b02a-4b38-a1db-0b92f049dc8b.png)
+
+### Unequal number of rows per column, with specific distribution of rows and columns
+
+Tray with unequal number of rows per column: first column has 4 rows, second column has 2 rows and final column as 3 rows. First and last columns are at 25% of width from each side. Rows in first and last column are equally distributed but the first two rows of middle column each occupyp 25% of column length.
+```openscad
+tray([100, 60, 30], n_columns=3, n_rows=[4,3,2], columns=[0.25, 0.75], rows=[false, [0.25, 0.5], false]);
+```
+![tray_advanced_example2](https://user-images.githubusercontent.com/791244/151715821-8bf5c8da-3543-458f-a0fe-f72d3c410ac2.png)
+
+Same but with unequal number of *columns per row*.
+```openscad
+tray([100, 60, 30], n_rows=3, n_columns=[4,3,2], rows=[0.25, 0.75], columns=[false, [0.25, 0.5], false], rows_first=true);
+```
+![tray_advanced_example3](https://user-images.githubusercontent.com/791244/151715975-e99d159d-875f-447a-9a6f-d8190a8cc968.png)
