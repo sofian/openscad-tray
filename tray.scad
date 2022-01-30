@@ -38,19 +38,19 @@
  *
  * Multi-tray with unequal subdividers (3 columns, 2 rows). First and last columns are at 30% of width from each side. 
  * Rows in first and last column are equally distributed but first row of middle column occupies only 25% of length.
- * tray([100, 60, 30], n_columns=3, n_rows=2, columns=[0.3, 0.5, 0.7], rows=[false, [0.25], false]);
+ * tray([100, 60, 30], n_columns=3, n_rows=2, columns=[0.3, 0.7], rows=[false, [0.25], false]);
  *
  * Multi-tray with unequal number of rows per column, equally distributed: first column has 4 rows, second column has 2 rows and final column as 3 rows.
  * tray([100, 60, 30], n_columns=3, n_rows=[4,2,3]);
  *
  * Multi-tray with unequal number of rows per column, with specific distribution of rows and columns.
- * tray([100, 60, 30], n_columns=3, n_rows=[4,3,2], columns=[0.3, 0.5, 0.7], rows=[false, [0.25, 0.5], false]);
+ * tray([100, 60, 30], n_columns=3, n_rows=[4,3,2], columns=[0.3, 0.7], rows=[false, [0.25, 0.5], false]);
  *
  * Multi-tray with unequal number of columns per row, equally distributed.
  * tray([100, 60, 30], n_rows=3, n_columns=[4,2,3], rows_first=true);
  * 
  * Multi-tray with unequal number of columns per row, with specific distribution of rows and columns.
- * tray([100, 60, 30], n_rows=3, n_columns=[4,3,2], rows=[0.3, 0.5, 0.7], columns=[false, [0.25, 0.5], false], rows_first=true);
+ * tray([100, 60, 30], n_rows=3, n_columns=[4,3,2], rows=[0.3, 0.7], columns=[false, [0.25, 0.5], false], rows_first=true);
  *
 */
 
