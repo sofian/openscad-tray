@@ -1,8 +1,10 @@
+# OpenSCAD Tray Library
+
 Allows the design of trays with optional subdivisions. Many different configuration options available.
 
 Designed to quickly create trays with different configurations, for efficient storing of parts, such as hardware, small tools, board game inserts, etc.
 
-# Usage
+## Usage
 
 In order to use, simply install in your OpenSCAD library folder and include the file ```tray.scad```:
 
@@ -38,11 +40,11 @@ Arguments:
 * **rows_first*** Allows to draw the tray priorizing the rows instead of columns. If ```true```, arguments for rows and columns are inverted (default: ```false```).
 
 
-# Examples
+## Examples
 
-## Basic usage
+### Basic usage
 
-### Simple tray
+#### Simple tray
 
 Simple tray with curved inside (default):
 
@@ -51,7 +53,7 @@ tray([100, 60, 30]);
 ```
 ![tray_example_basic](https://user-images.githubusercontent.com/791244/151715318-17cfad2f-fbd2-43f9-9e35-d561f216f50a.png)
 
-### Simple subdivisions
+#### Simple subdivisions
 
 Tray with equal subdividers (3 columns, 2 rows):
 ```openscad
@@ -59,7 +61,7 @@ tray([100, 60, 30], n_columns=3, n_rows=2);
 ```
 ![tray_example_subdividers_equal](https://user-images.githubusercontent.com/791244/151715323-8862e26d-2bf8-4224-a2ee-1f0582489519.png)
 
-### Column subdivisions of unequal size
+#### Column subdivisions of unequal size
 
 Tray with unequal subdividers (3 columns, 2 rows). First and last columns are at 25% of width from each side.
 ```openscad
@@ -67,7 +69,7 @@ tray([100, 60, 30], n_columns=3, n_rows=2, columns=[0.25, 0.75]);
 ```
 ![tray_example_subdividers_unequal](https://user-images.githubusercontent.com/791244/151715333-58a6b24d-582c-48ac-9bda-a060da336190.png)
 
-### Subdivisions with different numbers of rows per column
+#### Subdivisions with different numbers of rows per column
 
 Tray with unequal number of rows per column, equally distributed: first column has 4 rows, second column has 2 rows and final column as 3 rows.
 ```openscad
@@ -81,9 +83,9 @@ tray([100, 60, 30], n_rows=3, n_columns=[4,2,3], rows_first=true);
 ```
 ![tray_example_subdividers_unequal_n_columns](https://user-images.githubusercontent.com/791244/151715872-2ad8439a-8d7c-4465-9b81-0d60bcc71f7b.png)
 
-## Advanced usage
+### Advanced
 
-### Unequal subdivisions for both rows and columns
+#### Unequal subdivisions for both rows and columns
 
 Traw with unequal subdividers (3 columns, 2 rows). First and last columns are at 25% of width from each side. Rows in first and last column are equally distributed but first row of middle column occupies only one third of length.
 ```openscad
@@ -91,7 +93,7 @@ tray([100, 60, 30], n_columns=3, n_rows=2, columns=[0.25, 0.75], rows=[false, [1
 ```
 ![tray_advanced_example1](https://user-images.githubusercontent.com/791244/151715600-0b6faa30-b02a-4b38-a1db-0b92f049dc8b.png)
 
-### Subdivisions with different numbers of rows per column (specific distribution)
+#### Subdivisions with different numbers of rows per column (specific distribution)
 
 Tray with unequal number of rows per column: first column has 4 rows, second column has 2 rows and final column as 3 rows. First and last columns are at 25% of width from each side. Rows in first and last column are equally distributed but the first two rows of middle column each occupyp 25% of column length.
 ```openscad
