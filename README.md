@@ -59,7 +59,8 @@ Tray with equal subdividers (3 columns, 2 rows):
 ```openscad
 tray([100, 60, 30], n_columns=3, n_rows=2);
 ```
-![tray_example_subdividers_equal](https://user-images.githubusercontent.com/791244/151715323-8862e26d-2bf8-4224-a2ee-1f0582489519.png)
+
+![tray_example_subdividers_equal](https://user-images.githubusercontent.com/791244/159578560-ce96ea43-26b2-4420-987e-1641d51ca921.png)
 
 #### Column subdivisions of unequal size
 
