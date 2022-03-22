@@ -42,16 +42,26 @@ Arguments:
 
 ## Examples
 
-### Basic usage
+### Basics
 
 #### Simple tray
 
 Simple tray with curved inside (default):
-
 ```openscad
 tray([100, 60, 30]);
 ```
 ![tray_example_basic](https://user-images.githubusercontent.com/791244/151715318-17cfad2f-fbd2-43f9-9e35-d561f216f50a.png)
+
+#### Thickness
+
+Simple tray with curved inside (default) and different side and bottom thickness:
+```openscad
+tray([100, 60, 30], thickness=3, bottom_thickness=20);
+```
+
+![tray_example_thickness](https://user-images.githubusercontent.com/791244/159580106-61a44c22-0d6e-4b9a-8d1b-db496e837277.png)
+
+### Basic subdivisions
 
 #### Simple subdivisions
 
@@ -84,7 +94,8 @@ tray([100, 60, 30], n_rows=3, n_columns=[4,2,3], rows_first=true);
 ```
 ![tray_example_subdividers_unequal_n_columns](https://user-images.githubusercontent.com/791244/151715872-2ad8439a-8d7c-4465-9b81-0d60bcc71f7b.png)
 
-### Advanced
+
+### Advanced subdivisions
 
 #### Unequal subdivisions for both rows and columns
 
@@ -107,3 +118,25 @@ Same but with unequal number of *columns per row*.
 tray([100, 60, 30], n_rows=3, n_columns=[4,3,2], rows=[0.25, 0.75], columns=[false, [0.25, 0.5], false], rows_first=true);
 ```
 ![tray_advanced_example3](https://user-images.githubusercontent.com/791244/151715975-e99d159d-875f-447a-9a6f-d8190a8cc968.png)
+
+### Options
+
+#### Divider options
+
+Tray with thinner and lower dividers:
+```openscad
+tray([100, 60, 30], n_columns=3, n_rows=2, thickness=2, dividers_height=25, dividers_thickness=1);
+```
+
+![tray_example_subdividers_options](https://user-images.githubusercontent.com/791244/159579496-b27120ed-e3df-499e-a711-695c3ac14bab.png)
+
+#### Bevel options
+
+Same but with larger bevel radius at top and bottom:
+```openscad
+tray([100, 60, 30], n_columns=3, n_rows=2, thickness=2, dividers_height=25, dividers_thickness=1,
+     top_bevel_radius=6, bottom_bevel_radius=10, 
+     dividers_top_bevel_radius=3, dividers_bottom_bevel_radius=10);
+```
+
+![Untitled](https://user-images.githubusercontent.com/791244/159581150-6eb42989-da9d-473d-839f-03c979309bc6.png)
