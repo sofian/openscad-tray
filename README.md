@@ -32,7 +32,7 @@ Arguments:
 * **n_rows** The number of subdivider rows *or* an array of length ```n_columns``` with each item ```n_rows[i]``` containing the number of rows in column ```i``` (default: ```1```).
 * **columns** An optional 1d array of length ```(n_columns-1)```. Should contain numbers in the range [0, ..., 1] that specify where column subdividers should be located as a proportion of the total width (default: ```false```).
 * **rows** An optional array of length ```n_columns```. Each element ```rows[i]``` contains either the value ```false``` (to split that column evenly as specified by ```n_rows```) *or* an array of length ```n_rows[i]-1``` with numbers in the range [0, ..., 1] that specify where row subdividers should be located as a proportion of the total length of column ```i``` (default: ```false```).
-* **bottom_thickness** The thickness of the bottom wall (default same as ```thickness```).
+* **bottom_thickness** The thickness of the bottom wall (default: same as ```thickness```).
 * **dividers_height** The height of subdividers (should be less than or equal to tray's height) (default: same as tray).
 * **dividers_thickness** The thickness of subdividers (should be less than or equal to tray's thickness) (default: same as tray).
 * **bottom_bevel_radius** Radius of bottom bevel for curved trays (default: ```2 x thickness```).
