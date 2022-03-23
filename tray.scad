@@ -55,6 +55,7 @@
 */
 
 module tray(dimensions, n_columns=1, n_rows=1, columns=false, rows=false, thickness=2, curved=true,
+                  bottom_thickness=undef,
                   dividers_height=undef, dividers_thickness=undef,
                   bottom_bevel_radius=undef, top_bevel_radius=undef,
                   dividers_bottom_bevel_radius=undef, dividers_top_bevel_radius=undef,
@@ -97,7 +98,7 @@ module tray(dimensions, n_columns=1, n_rows=1, columns=false, rows=false, thickn
 	    	cell_length = [ for (i = [0 : n_columns-1]) all_cells_length[i] / column_n_rows[i] ];
 
 	    	// Draw main box.
-	    	tray_outside(dimensions, thickness=thickness, curved=curved, top_bevel_radius=top_bevel_radius);
+	    	tray_outside(dimensions, thickness=thickness, curved=curved, top_bevel_radius=top_bevel_radius, bottom_thickness=bottom_thickness);
 
 		// Create list of columns.
 	    	column_width = [
@@ -132,7 +133,7 @@ module tray(dimensions, n_columns=1, n_rows=1, columns=false, rows=false, thickn
 				       0])
 			    tray_single([column_width[i] - (i == 0 ? 0 : column_width[i-1]),
 				  row_length[i][j] - (j == 0 ? 0 : row_length[i][j-1]),              cell_height], 
-				 thickness=cell_thickness, curved=curved, bottom_bevel_radius=cell_bottom_bevel_radius, top_bevel_radius=cell_top_bevel_radius);
+				 thickness=cell_thickness, curved=curved, bottom_thickness=bottom_thickness, bottom_bevel_radius=cell_bottom_bevel_radius, top_bevel_radius=cell_top_bevel_radius);
 			}
 		    }
 		    
@@ -146,8 +147,8 @@ module tray(dimensions, n_columns=1, n_rows=1, columns=false, rows=false, thickn
 }
 
 // Just creates the outside shell of main box.
-module tray_outside(dimensions, thickness=2, curved=true, top_bevel_radius=undef) {
-	tray_single(dimensions, thickness=thickness, curved=curved, bottom_bevel_radius=0, top_bevel_radius=top_bevel_radius);
+module tray_outside(dimensions, thickness=2, curved=true, top_bevel_radius=undef, bottom_thickness=undef) {
+	tray_single(dimensions, thickness=thickness, curved=curved, bottom_bevel_radius=0, top_bevel_radius=top_bevel_radius, bottom_thickness=bottom_thickness);
 }
 
 // Draws an inverted rounded cube used to scoop out inside using difference().
@@ -166,7 +167,7 @@ module tray_scoop(dimensions, dividers_height, thickness=2, curved=true,
 }
 
 // Draws a single tray.
-module tray_single(dimensions, thickness=2, curved=true, bottom_bevel_radius=undef, top_bevel_radius=undef) {
+module tray_single(dimensions, thickness=2, curved=true, bottom_thickness=undef, bottom_bevel_radius=undef, top_bevel_radius=undef) {
     
     ext_top_bevel_radius = thickness * 0.05;
     
@@ -182,17 +183,26 @@ module tray_single(dimensions, thickness=2, curved=true, bottom_bevel_radius=und
     int_top_bevel_radius = top_bevel_radius != undef ? top_bevel_radius : (curved ? thickness : 0);
     int_bottom_bevel_radius = bottom_bevel_radius != undef ? bottom_bevel_radius : (curved ? 2*thickness : 0);
 
+    _bottom_thickness = bottom_thickness != undef ? bottom_thickness : thickness;
+
     // Create tray.
     difference() {
         _tray_rounded_cube([ext_width, ext_length, ext_height],
                      r=ext_top_bevel_radius,
                      x=true, rx=[0,ext_top_bevel_radius,ext_top_bevel_radius,0], 
                      y=true, ry=[ext_top_bevel_radius,ext_top_bevel_radius,0,0]);
-        translate([thickness, thickness, thickness])
-            _tray_rounded_cube([int_width, int_length, int_height],
+        if (_bottom_thickness > 0)
+	    translate([thickness, thickness, _bottom_thickness])
+            	_tray_rounded_cube([int_width, int_length, ext_height],
                          r=int_top_bevel_radius,
                          x=true, rx=[int_bottom_bevel_radius,0,0,int_bottom_bevel_radius], 
                          y=true, ry=[0,0,int_bottom_bevel_radius,int_bottom_bevel_radius]);
+
+
+	else
+	    translate([thickness, thickness, 0])
+            	_tray_rounded_cube([int_width, int_length, ext_height],
+                         r=int_top_bevel_radius, x=false, y=false);
     }
 }
 
