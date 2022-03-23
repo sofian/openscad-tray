@@ -17,6 +17,7 @@ You can then use the function ```tray()``` which comes with many different optio
 ```openscad
 tray(dimensions, thickness=2, curved=true,
     n_columns=1, n_rows=1, columns=false, rows=false,
+    bottom_thickness=undef,
     dividers_height=undef, dividers_thickness=undef,
     bottom_bevel_radius=undef, top_bevel_radius=undef,
     dividers_bottom_bevel_radius=undef, dividers_top_bevel_radius=undef,
@@ -31,6 +32,7 @@ Arguments:
 * **n_rows** The number of subdivider rows *or* an array of length ```n_columns``` with each item ```n_rows[i]``` containing the number of rows in column ```i``` (default: ```1```).
 * **columns** An optional 1d array of length ```(n_columns-1)```. Should contain numbers in the range [0, ..., 1] that specify where column subdividers should be located as a proportion of the total width (default: ```false```).
 * **rows** An optional array of length ```n_columns```. Each element ```rows[i]``` contains either the value ```false``` (to split that column evenly as specified by ```n_rows```) *or* an array of length ```n_rows[i]-1``` with numbers in the range [0, ..., 1] that specify where row subdividers should be located as a proportion of the total length of column ```i``` (default: ```false```).
+* **bottom_thickness** The thickness of the bottom wall (default same as ```thickness```).
 * **dividers_height** The height of subdividers (should be less than or equal to tray's height) (default: same as tray).
 * **dividers_thickness** The thickness of subdividers (should be less than or equal to tray's thickness) (default: same as tray).
 * **bottom_bevel_radius** Radius of bottom bevel for curved trays (default: ```2 x thickness```).
@@ -51,17 +53,6 @@ Simple tray with curved inside (default):
 tray([100, 60, 30]);
 ```
 ![tray_example_basic](https://user-images.githubusercontent.com/791244/151715318-17cfad2f-fbd2-43f9-9e35-d561f216f50a.png)
-
-#### Thickness
-
-Simple tray with curved inside (default) and different side and bottom thickness:
-```openscad
-tray([100, 60, 30], thickness=3, bottom_thickness=20);
-```
-
-![tray_example_thickness](https://user-images.githubusercontent.com/791244/159580106-61a44c22-0d6e-4b9a-8d1b-db496e837277.png)
-
-### Basic subdivisions
 
 #### Simple subdivisions
 
@@ -120,6 +111,15 @@ tray([100, 60, 30], n_rows=3, n_columns=[4,3,2], rows=[0.25, 0.75], columns=[fal
 ![tray_advanced_example3](https://user-images.githubusercontent.com/791244/151715975-e99d159d-875f-447a-9a6f-d8190a8cc968.png)
 
 ### Options
+
+#### Thickness
+
+Simple tray with different side and bottom thickness:
+```openscad
+tray([100, 60, 30], thickness=3, bottom_thickness=20);
+```
+
+![tray_example_thickness](https://user-images.githubusercontent.com/791244/159580106-61a44c22-0d6e-4b9a-8d1b-db496e837277.png)
 
 #### Divider options
 
