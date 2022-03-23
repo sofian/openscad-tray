@@ -4,6 +4,23 @@ Allows the design of trays with optional subdivisions. Many different configurat
 
 Designed to quickly create trays with different configurations, for efficient storing of parts, such as hardware, small tools, board game inserts, etc.
 
+## Table of Contents
+
+- [Usage](#usage)
+- [Examples](#examples)
+  * [Basics](#basics)
+    + [Simple tray](#simple-tray)
+    + [Simple subdivisions](#simple-subdivisions)
+    + [Column subdivisions of unequal size](#column-subdivisions-of-unequal-size)
+    + [Subdivisions with different numbers of rows per column](#subdivisions-with-different-numbers-of-rows-per-column)
+  * [Advanced subdivisions](#advanced-subdivisions)
+    + [Unequal subdivisions for both rows and columns](#unequal-subdivisions-for-both-rows-and-columns)
+    + [Subdivisions with different numbers of rows per column (specific distribution)](#subdivisions-with-different-numbers-of-rows-per-column--specific-distribution-)
+  * [Options](#options)
+    + [Thickness](#thickness)
+    + [Divider options](#divider-options)
+    + [Bevel options](#bevel-options)
+
 ## Usage
 
 In order to use, simply install in your OpenSCAD library folder and include the file ```tray.scad```:
