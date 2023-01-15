@@ -55,8 +55,8 @@ Arguments:
 * **bottom_bevel_radius** Radius of bottom bevel for curved trays (default: ```2 x thickness```).
 * **top_bevel_radius** Radius of top/sides bevel for curved trays (default: ```thickness```).
 * **dividers_bottom_bevel_radius** Radius of bottom bevel of subdivisions for curved trays (default: same as ```bottom_bevel_radius```)
-* **dividers_top_bevel_radius** Radius of top/sides bevel of subdivisions for curved trays (default: same as ```top_bevel_radius).
-* **rows_first*** Allows to draw the tray priorizing the rows instead of columns. If ```true```, arguments for rows and columns are inverted (default: ```false```).
+* **dividers_top_bevel_radius** Radius of top/sides bevel of subdivisions for curved trays (default: same as ```top_bevel_radius```).
+* **rows_first** Allows to draw the tray priorizing the rows instead of columns. If ```true```, arguments for rows and columns are inverted (default: ```false```).
 
 
 ## Examples
